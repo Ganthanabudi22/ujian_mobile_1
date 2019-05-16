@@ -1,29 +1,3 @@
-// import React, { Component } from "react";
-// import { 
-//     View,
-//     Text,
-//     StyleSheet
-// } from "react-native";
-
-// class MobilScreen extends Component {
-//     render() {
-//         return (
-//             <View style={styles.container}>
-//                 <Text>MobilScreen</Text>
-//             </View>
-//         );
-//     }
-// }
-// export default MobilScreen;
-
-// const styles = StyleSheet.create({
-//     container: {
-//         flex: 1,
-//         alignItems: 'center',
-//         justifyContent: 'center'
-//     }
-// });
-
 import React, { Component } from 'react';
 import {Fire} from '../support/firebase'
 import { Container, Header, Content, Form, Item, Input, Label,Picker, Left,Right,Text,Button,Body,Title } from 'native-base';
@@ -35,16 +9,21 @@ class AddEmployee extends Component {
     onBtnClick = () => {
         var db = Fire.database()
         var add = db.ref('manager/'+this.props.user.id+'/employee')
-
-        add.push({
-            nama: this.InputNama ,
-            shift:this.state.selected ,
-            phone :this.InputPhone
-        })
-        .then((res)=>{
-            alert('BERHASIL DITAMBAH')
-        })
-        .catch((err)=>console.log(err))
+        {
+            this.InputNama&&this.state.selected&&this.InputPhone
+            ?
+            add.push({
+                nama: this.InputNama ,
+                shift:this.state.selected ,
+                phone :this.InputPhone
+            })
+            .then((res)=>{
+                alert('BERHASIL DITAMBAH')
+            })
+            .catch((err)=>console.log(err))
+        :
+        alert('TIDAK BOLEH ADA YANG KOSONG')
+        }
     }
 render() {
 return (

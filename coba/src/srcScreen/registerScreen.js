@@ -35,7 +35,6 @@ import {Fire} from './../support/firebase'
 import {onLoginSuccess} from '../2.action'
 import {connect} from 'react-redux'
 import {StackActions,NavigationActions} from 'react-navigation'
-import { tsIndexSignature } from '@babel/types';
 
 class Register extends Component {
 

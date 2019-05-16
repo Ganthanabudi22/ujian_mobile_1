@@ -62,14 +62,19 @@ return (
                 <Label>Select Data</Label>
             </View>
             <View>
+                
             <Picker style={{width:200}} note  mode="dropdown" selectedValue={this.state.idEdit} onValueChange={(val)=> this.setState({idEdit:val})}>
+            
                 <Picker.Item label='Select Name' value={null}/>
-                    {
+                    {this.state.data
+                    ?
                         Object.keys(this.state.data).map(val=>{
                             return(
                                 <Picker.Item label={this.state.data[val].nama} value={val}/>
                             )
                         })
+                        :
+                        <Picker.Item label= 'data kospng' value={null}/>
                     }
                 </Picker>
             </View>
