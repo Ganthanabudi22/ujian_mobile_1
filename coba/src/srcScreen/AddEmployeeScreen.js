@@ -3,8 +3,16 @@ import {Fire} from '../support/firebase'
 import { Container, Header, Content, Form, Item, Input, Label,Picker, Left,Right,Text,Button,Body,Title } from 'native-base';
 import {connect} from 'react-redux'
 class AddEmployee extends Component {
-    state={selected : '' }
-
+    state={selected : '' , data :{}}
+    componentDidMount () {
+        var db = Fire.database()
+        var manager = db.ref('manager/'+this.props.user.id+'/employee')
+        manager.on('value', (Item)=>{
+        this.setState({data:(Item.val())})
+        },(err)=>{
+            console.log(err)
+        })
+    }
 
     onBtnClick = () => {
         var db = Fire.database()
@@ -19,6 +27,15 @@ class AddEmployee extends Component {
             })
             .then((res)=>{
                 alert('BERHASIL DITAMBAH')
+                { Object.keys(this.state.data).map(val => {
+                    this.props.navigation.navigate('sms',
+                    {
+                    nama : this.state.data[val].nama,
+                    shift : this.state.data[val].shift,
+                    phone : this.state.data[val].phone
+                    }
+                    )
+                })}
             })
             .catch((err)=>console.log(err))
         :

@@ -10,6 +10,7 @@ import AddEmployeeScreen from '../srcScreen/AddEmployeeScreen';
 import MenuAccountSetting from '../srcScreen/MenuAccountSetting'
 import ListEmployeeScren from '../srcScreen/ListEmployeeScreen'
 import EmployeeDetailScreen from '../srcScreen/EmployeeDetailScreen'
+import SmsEmloyeeScreen from '../srcScreen/smsEmployee'
 
 const AccountSetting = createMaterialTopTabNavigator ({
     menu : MenuAccountSetting,
@@ -20,7 +21,8 @@ const StackBeranda = createStackNavigator ({
     Add : AddEmployeeScreen,
     Edit : EditEmployeeScreen,
     list : ListEmployeeScren,
-    detail :EmployeeDetailScreen
+    detail :EmployeeDetailScreen,
+    sms : SmsEmloyeeScreen
 
 },{
     headerMode :'none'
